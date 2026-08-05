@@ -1,0 +1,612 @@
+/* ============ tokens (из Figma) ============ */
+  :root {
+    --color-surface-base: #ffffff;   /* color/surface-base */
+    --color-bg: #0d1117;             /* фон секций Caviar */
+    --spacing-section-gap: 64px;     /* spacing/section-gap */
+    --spacing-stats-gap: 14px;       /* spacing/stats-gap */
+    --font-display: 'Nunito Sans', system-ui, sans-serif;
+    --hero-scroll-length: 220vh;     /* длина скролла, за которую видео сжимается */
+    --color-section-light: #f2f0ed;  /* фон секций контента; на нём же сжимается видео */
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--color-section-light);
+    font-family: var(--font-display);
+    color: var(--color-surface-base);
+  }
+
+  /* ============ preloader ============ */
+  .preloader {
+    position: fixed; inset: 0; z-index: 50;
+    background: var(--color-bg);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 18px;
+    transition: opacity .7s ease, visibility .7s ease;
+  }
+  .preloader.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+  .preloader__pct {
+    font-size: 14px; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+    opacity: .9;
+  }
+  .preloader__bar {
+    width: 180px; height: 1px; background: rgba(255,255,255,.18);
+    overflow: hidden;
+  }
+  .preloader__bar i {
+    display: block; height: 100%; width: 100%;
+    background: var(--color-surface-base);
+    transform: scaleX(0); transform-origin: left center;
+    transition: transform .2s linear;
+  }
+
+  /* ============ hero: sticky, видео сжимается при скролле ============ */
+  /* Section / Hero (node 9010:250) */
+  .hero-scroll { height: var(--hero-scroll-length); position: relative; }
+
+  .hero {
+    position: sticky; top: 0;
+    height: 100vh; height: 100svh;
+    overflow: hidden;
+    background: var(--color-section-light); /* = фон второй секции: видео сжимается на её цвете */
+  }
+
+  /* контейнер видео — именно он сжимается через clip-path */
+  .hero__media {
+    position: absolute; inset: 0;
+    will-change: clip-path;
+  }
+  .hero__media video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  /* затемнение под текстом */
+  .hero__media::after {
+    content: '';
+    position: absolute; inset: auto 0 0 0; height: 45%;
+    background: linear-gradient(to top, rgba(13,17,23,.55), transparent);
+    pointer-events: none;
+  }
+
+  /* Hero title (node 9010:251) */
+  .hero__title {
+    position: absolute; z-index: 2;
+    left: 0; right: 0; bottom: var(--spacing-section-gap);
+    display: flex; flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-stats-gap);
+    text-align: center;
+    will-change: transform, opacity;
+  }
+
+  /* Display 1 (node 9010:252) — 52/52, tracking -1.04 */
+  .hero__display {
+    font-size: clamp(32px, 4.6vw, 52px);
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* microheader (node 9010:253) — 14/14, tracking +0.14, uppercase */
+  .hero__micro {
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    opacity: .92;
+  }
+
+  /* появление текста после прелоадера */
+  .hero__title > * {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+  }
+  .is-ready .hero__title > * { opacity: 1; transform: none; }
+  .is-ready .hero__micro { transition-delay: .15s; }
+
+  .hero__hint {
+    position: absolute; z-index: 2;
+    bottom: 18px; left: 50%; transform: translateX(-50%);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: .3em; text-transform: uppercase;
+    opacity: 0; transition: opacity 1s ease .8s;
+  }
+  .is-ready .hero__hint { opacity: .55; }
+
+  /* ============ Section / Model 9 (node 9010:216) ============ */
+  :root {
+    --color-neutral-dark: #393838;    /* color/neutral-dark */
+    --color-brand-accent: #a89974;    /* color/brand-accent */
+    --spacing-container-x: 24px;      /* spacing/container-x */
+    --spacing-cta-gap: 18px;          /* spacing/cta-gap */
+  }
+
+  .about {
+    position: relative; z-index: 1;
+    background: var(--color-section-light);
+    color: var(--color-neutral-dark);
+    display: flex; justify-content: center; align-items: flex-start;
+    padding: calc(var(--spacing-section-gap) * 2) var(--spacing-section-gap);
+  }
+
+  /* Section / Info Model (9010:217) */
+  .about__info {
+    display: flex; flex-direction: column; align-items: flex-start;
+    gap: var(--spacing-container-x);
+    width: min(614px, 100%);
+  }
+
+  /* microheader (9010:218) */
+  .about__micro {
+    font-size: 14px; line-height: 1; font-weight: 700;
+    letter-spacing: .01em; text-transform: uppercase;
+    color: var(--color-brand-accent);
+  }
+
+  /* Display 2 (9010:219) — 52/52, tracking -1.04 */
+  .about__display {
+    font-size: clamp(30px, 3.6vw, 52px);
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    width: min(750px, 100%);
+  }
+  .about__display .gold { color: var(--color-brand-accent); font-style: normal; }
+
+  /* body (9010:220) — 17/24, tracking +0.17 */
+  .about__body {
+    font-size: 17px; line-height: 24px; font-weight: 400;
+    letter-spacing: .01em;
+    max-width: 614px;
+  }
+  .about__body .gold { color: var(--color-brand-accent); font-style: normal; }
+
+  /* btn (9010:222) */
+  .about__cta-wrap { padding-top: var(--spacing-cta-gap); }
+  .about__cta {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--color-brand-accent);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 14px; line-height: 24px; font-weight: 700;
+    letter-spacing: .05em; text-transform: uppercase;
+    padding: 16px 80px;
+    border: 0; cursor: pointer;
+    transition: background-color .35s ease, transform .35s ease;
+  }
+  .about__cta:hover { background: #93855f; transform: translateY(-2px); }
+
+  /* ---------- анимации появления (стиль референса) ---------- */
+  /* маска: слово поднимается из-под линии строки */
+  .wmask { display: inline-block; overflow: hidden; vertical-align: top; }
+  .wmask .w {
+    display: inline-block;
+    transform: translateY(115%);
+    transition: transform .9s cubic-bezier(.16, 1, .3, 1);
+    transition-delay: var(--d, 0s);
+  }
+  .is-in .wmask .w { transform: none; }
+
+  /* мягкий подъём для второстепенных элементов */
+  .fx {
+    opacity: 0; transform: translateY(26px);
+    transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+    transition-delay: var(--d, 0s);
+  }
+  .is-in .fx { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wmask .w { transform: none; transition: none; }
+    .fx { opacity: 1; transform: none; transition: none; }
+    .gallery__cta { opacity: 1 !important; }  /* скрипт скролла отключён — кнопка видима сразу */
+  }
+
+  /* Section / Model 10 (node 9010:239): заголовок цветом ink-deep */
+  .about--gallery .about__display { color: var(--color-ink-deep, #0d1117); }
+
+  /* ============ Section / Model 8 (node 9010:190): галерея с кнопкой-оверлеем ============ */
+  :root { --color-cta-navy: #06224d; }   /* цвет кнопки галереи из макета */
+
+  .gallery {
+    position: relative; z-index: 1;
+    background: var(--color-section-light);
+    padding: var(--spacing-section-gap);
+  }
+  .gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: clamp(24px, 3.3vw, 64px);   /* 64 на макетной ширине */
+    row-gap: clamp(48px, 5.2vw, 100px);     /* 100 на макетной ширине */
+  }
+  /* ячейка сетки — на ней работает параллакс (transform не конфликтует с ревилом) */
+  .gallery__cell { will-change: transform; }
+
+  .gallery__tile { margin: 0; position: relative; }
+
+  .tile__media {
+    aspect-ratio: 3 / 4;                     /* 211.2 × 281.35 в макете */
+    overflow: hidden;
+  }
+  /* два слоя зума: .tile__zoom ведёт скролл (JS, без transition),
+     img ведёт ховер (CSS с transition) — трансформации не конфликтуют */
+  .tile__zoom {
+    width: 100%; height: 100%;
+    transform: scale(1.16);                  /* стартовый скролл-зум */
+    will-change: transform;
+  }
+  .tile__media img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s ease;
+  }
+  .gallery__tile:hover .tile__media img { transform: scale(1.06); }
+
+  /* подпись: появляется под плиткой при ховере (стиль референса) */
+  .tile__caption {
+    position: absolute;
+    top: calc(100% + 12px); left: 0; right: 0;
+    display: flex; flex-direction: column; gap: 4px;
+    text-align: center;
+    font-size: 14px; line-height: 1; font-weight: 700;
+    letter-spacing: .01em; text-transform: uppercase;
+    color: var(--color-neutral-dark, #393838);
+    opacity: 0; transform: translateY(8px);
+    transition: opacity .45s ease, transform .45s cubic-bezier(.16,1,.3,1);
+    pointer-events: none;
+  }
+  .gallery__tile:hover .tile__caption,
+  .gallery__tile:focus-within .tile__caption {
+    opacity: 1; transform: none;
+  }
+  /* на тач-устройствах ховера нет — подпись видна всегда */
+  @media (hover: none) {
+    .tile__caption { opacity: 1; transform: none; }
+  }
+
+  /* кнопка следует за зрителем (btn 9010:237, механика референса):
+     невидимая дорожка растянута на всю секцию, внутри неё кнопка sticky —
+     въезжает снизу вместе с сеткой, липнет к центру вьюпорта,
+     у конца секции уезжает вместе с последним рядом */
+  .gallery__cta-track {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center;
+    pointer-events: none;                    /* дорожка не перекрывает ховеры плиток */
+    z-index: 2;
+  }
+  .gallery__cta {
+    position: sticky;
+    top: calc(50vh - 34px);                  /* центр вьюпорта минус полвысоты кнопки */
+    pointer-events: auto;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 368px; height: 68px;
+    padding: 16px 80px;
+    background: #ffffff;                      /* макет 9010:237: белая кнопка */
+    color: var(--color-ink-deep, #0d1117);
+    box-shadow: 0 12px 40px rgba(13, 17, 23, .08);
+    font-family: var(--font-display);
+    font-size: 14px; line-height: 24px; font-weight: 700;
+    letter-spacing: .05em; text-transform: uppercase;
+    white-space: nowrap;
+    border: 0; cursor: pointer;
+    transition: background-color .35s ease, opacity .9s cubic-bezier(.16,1,.3,1),
+                transform .9s cubic-bezier(.16,1,.3,1);
+  }
+  .gallery__cta:hover { background: var(--color-section-light); }
+
+  /* появление/исчезание кнопки ведёт скролл (см. скрипт галереи):
+     класс .fx ей не нужен, стартовое состояние задаётся здесь */
+  .gallery__cta { opacity: 0; }
+
+  @media (max-width: 1280px) {
+    .gallery__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 767px) {
+    .gallery { padding: 96px 24px; }
+    .gallery__grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery__cta { width: auto; padding: 16px 32px; }
+  }
+
+  @media (max-width: 767px) {
+    .about { padding: 96px 24px; }
+    .about__cta { width: 100%; padding: 16px 24px; }
+  }
+
+  /* ============ mobile + reduced motion: без sticky и сжатия ============ */
+  @media (max-width: 767px), (prefers-reduced-motion: reduce) {
+    .hero-scroll { height: auto; }
+    .hero { position: relative; }
+  }
+  @media (max-width: 767px) {
+    :root { --spacing-section-gap: 24px; }
+    .hero__display { white-space: normal; }
+  }
+
+/* ============ Section / Model 11 (node 9011:256): центрированный интро-блок ============ */
+.about--center { padding-top: calc(var(--spacing-section-gap) * 2.5); }
+.about--center .about__info {
+  align-items: center;
+  text-align: center;
+  width: min(864px, 100%);
+  gap: 40px;                                  /* spacing/column-gap этого блока */
+}
+.about--center .about__display { width: 100%; }
+.about--center .about__body { max-width: 614px; }
+.about--center .about__cta-wrap { display: flex; justify-content: center; }
+
+/* кнопки-ссылки наследуют вид кнопок */
+a.gallery__cta, a.about__cta { text-decoration: none; }
+a.about__cta { display: inline-flex; align-items: center; justify-content: center; width: 368px; }
+@media (max-width: 767px) { a.about__cta { width: 100%; } }
+
+/* мягкий кросс-фейд между страницами (прогрессивное улучшение, Chromium) */
+@view-transition { navigation: auto; }
+
+/* ============ Section / Model 13 (node 9011:285): панель фильтра ============ */
+.filterbar {
+  position: relative; z-index: 1;
+  background: var(--color-section-light);
+  padding: 30px var(--spacing-section-gap);
+}
+.filterbar__inner {
+  display: flex; align-items: center;
+  gap: var(--spacing-container-x);
+  width: min(864px, 100%);
+  min-height: 28px;
+}
+/* stat-big из макета: 26/30, tracking -0.26 */
+.filterbar__label {
+  font-size: 26px; line-height: 30px; font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-neutral-dark, #393838);
+}
+/* на мобиле панель с заголовком «Фильтр» не нужна — её роль выполняет плавающая кнопка */
+@media (max-width: 767px) {
+  .filterbar { display: none; }
+}
+
+/* ============ Section / Model 14 (node 9011:299): чипы фильтра ============ */
+.filterchips {
+  position: relative; z-index: 1;
+  background: var(--color-section-light);
+  padding: 20px var(--spacing-section-gap) 40px;
+}
+.filterchips__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
+.chip {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 16px 24px;                       /* в макете 80, но контент диктует меньше — кнопка тянется колонкой */
+  background: var(--color-surface-base, #fff);
+  color: var(--color-neutral-dark, #393838);
+  font-family: var(--font-display);
+  font-size: 14px; line-height: 24px; font-weight: 700;
+  letter-spacing: .05em; text-transform: uppercase;
+  white-space: nowrap;
+  border: 0; cursor: pointer;
+  transition: background-color .3s ease, color .3s ease, transform .3s ease, box-shadow .3s ease;
+}
+.chip:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(13,17,23,.07); }
+.chip[aria-pressed="true"] {
+  background: var(--color-brand-accent, #a89974);
+  color: #fff;
+}
+.chip:focus-visible { outline: 2px solid var(--color-brand-accent); outline-offset: 2px; }
+
+/* тестовая строка состояния мультивыбора */
+.filterchips__status {
+  margin-top: 24px;
+  font-size: 14px; line-height: 24px;
+  color: var(--color-neutral-dark, #393838);
+  opacity: .65;
+}
+.filterchips__status b { color: var(--color-brand-accent); font-weight: 700; }
+.filterchips__reset {
+  background: none; border: 0; padding: 0; margin-left: 8px;
+  font: inherit; font-weight: 700;
+  color: var(--color-neutral-dark);
+  text-decoration: underline; text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+@media (max-width: 1280px) {
+  .filterchips__grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+}
+@media (max-width: 767px) {
+  .filterchips { padding: 16px 24px 32px; }
+  .filterchips__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .chip { padding: 14px 12px; }
+}
+
+/* ============ Section / Model 15 (node 9016:401): сетка концептов ============ */
+.gallery--concepts {
+  padding-top: 30px;
+  /* гэпы этого блока крупнее, чем у галереи главной: 128/100 на макетной ширине */
+}
+.gallery--concepts .gallery__grid {
+  column-gap: clamp(32px, 6.6vw, 128px);
+  row-gap: clamp(48px, 5.2vw, 100px);
+}
+
+/* кнопка «Увеличить» (9016:435): по центру плитки, видима при ховере */
+.tile__zoom-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  translate: -50% -50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 32px; padding: 4px 20px;
+  background: var(--color-surface-base, #fff);
+  color: var(--color-neutral-dark, #393838);
+  font-family: var(--font-display);
+  font-size: 14px; line-height: 24px; font-weight: 700;
+  letter-spacing: .05em; text-transform: uppercase;
+  white-space: nowrap;
+  border: 0; cursor: pointer;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity .35s ease, transform .35s cubic-bezier(.16,1,.3,1);
+}
+.gallery__tile:hover .tile__zoom-btn,
+.tile__zoom-btn:focus-visible {
+  opacity: 1; transform: none;
+}
+@media (hover: none) { .tile__zoom-btn { opacity: 1; transform: none; } }
+
+/* фильтрация: скрытие/появление карточек */
+.concept { transition: opacity .35s ease, scale .35s ease; }
+.concept.is-hiding { opacity: 0; scale: .94; pointer-events: none; }
+.concept[hidden] { display: none; }
+
+/* ============ попап концепта (node 9019:467) ============ */
+.lightbox[hidden] { display: none; }   /* атрибут hidden сильнее нашего display:flex */
+.lightbox {
+  position: fixed; inset: 0; z-index: 100;
+  background: var(--color-section-light, #f2f0ed);   /* светлый попап, как в макете */
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px 16px;
+  opacity: 0; transition: opacity .35s ease;
+}
+.lightbox.is-open { opacity: 1; }
+
+.lightbox__figure {
+  position: relative; margin: 0;
+  width: min(580px, 100%);
+  max-height: 100%;
+}
+.lightbox__img {
+  display: block;
+  width: 100%; max-height: calc(100vh - 80px);
+  object-fit: cover;
+  transition: opacity .2s ease;
+}
+
+/* три белых квадрата 48×48 у нижней кромки изображения */
+.lightbox__controls {
+  position: absolute;
+  bottom: 10px; left: 50%;
+  translate: -50% 0;
+  display: flex; gap: 5px;
+}
+.lightbox__btn {
+  width: 48px; height: 48px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--color-surface-base, #fff);
+  color: var(--color-neutral-dark, #393838);
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 600; line-height: 1;
+  border: 0; cursor: pointer;
+  transition: background-color .3s ease;
+}
+.lightbox__btn:hover { background: var(--color-section-light); }
+.lightbox__btn:focus-visible { outline: 2px solid var(--color-brand-accent); outline-offset: 2px; }
+
+/* подпись справа внизу: имя 24 + категория золотом */
+.lightbox__caption {
+  position: absolute;
+  right: var(--spacing-section-gap); bottom: 40px;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.lightbox__name {
+  font-size: 24px; line-height: 1.2; font-weight: 400;
+  color: var(--color-neutral-dark, #393838);
+}
+.lightbox__cat {
+  font-size: 14px; line-height: 24px; font-weight: 700;
+  letter-spacing: .05em; text-transform: uppercase;
+  color: var(--color-brand-accent, #a89974);
+}
+
+@media (max-width: 767px) {
+  .lightbox { padding: 24px 16px; }
+  .lightbox__caption { position: static; margin-top: 12px; align-items: center; text-align: center; }
+  .lightbox { flex-direction: column; }
+}
+
+/* картинка концепта кликабельна — открывает попап */
+.concept .tile__media { cursor: pointer; }
+
+/* ============ мобильный фильтр: плавающая кнопка + нижняя шторка ============ */
+/* кнопка «Применить» и FAB на десктопе не существуют */
+.filterchips__apply, .filter-fab { display: none; }
+
+@media (max-width: 767px) {
+  /* плавающая кнопка: фиксирована, следует за скроллом */
+  .filter-fab {
+    position: fixed;
+    left: 50%; bottom: 24px;
+    translate: -50% 0;
+    z-index: 90;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 16px 40px;
+    background: var(--color-brand-accent, #a89974);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 14px; line-height: 24px; font-weight: 700;
+    letter-spacing: .05em; text-transform: uppercase;
+    white-space: nowrap;
+    border: 0; cursor: pointer;
+    box-shadow: 0 12px 32px rgba(13,17,23,.22);
+    transition: opacity .3s ease, translate .3s ease;
+  }
+  .filter-fab.is-hidden { opacity: 0; translate: -50% 12px; pointer-events: none; }
+  .filter-fab__count {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 22px; height: 22px; padding: 0 6px;
+    background: #fff; color: var(--color-brand-accent);
+    border-radius: 11px; font-size: 12px;
+  }
+
+  /* та же секция фильтра превращается в нижнюю шторку */
+  .filterchips {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 95;
+    background: var(--color-surface-base, #fff);
+    padding: 24px 24px calc(24px + env(safe-area-inset-bottom));
+    box-shadow: 0 -16px 48px rgba(13,17,23,.18);
+    transform: translateY(102%);
+    transition: transform .45s cubic-bezier(.16,1,.3,1);
+  }
+  .filterchips.is-open { transform: none; }
+
+  /* чипы — одна лента с горизонтальным скроллом */
+  .filterchips__grid {
+    display: flex; flex-wrap: nowrap;
+    gap: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 16px 0 4px;
+    padding-bottom: 4px;
+  }
+  .filterchips__grid::-webkit-scrollbar { display: none; }
+  .chip { flex: 0 0 auto; background: var(--color-section-light); }
+  .chip[aria-pressed="true"] { background: var(--color-brand-accent); }
+
+  .filterchips__status { margin-top: 8px; font-size: 13px; }
+
+  .filterchips__apply {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%;
+    margin-top: 16px;
+    padding: 16px 24px;
+    background: var(--color-brand-accent, #a89974);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 14px; line-height: 24px; font-weight: 700;
+    letter-spacing: .05em; text-transform: uppercase;
+    border: 0; cursor: pointer;
+  }
+}

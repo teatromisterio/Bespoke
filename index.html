@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caviar — Персональный дизайн</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <span class="preloader__pct" id="pct">0%</span>
+    <span class="preloader__bar"><i id="bar"></i></span>
+  </div>
+
+  <!-- Section / Hero: видео играет само, при скролле блок сжимается к центру -->
+  <div class="hero-scroll" id="heroScroll">
+    <section class="hero" id="hero">
+      <div class="hero__media" id="media">
+        <video id="video" muted playsinline loop preload="auto"></video>
+      </div>
+      <div class="hero__title" id="title">
+        <h1 class="hero__display">Персональный дизайн</h1>
+        <p class="hero__micro">ваша история становится шедевром.</p>
+      </div>
+      <span class="hero__hint" id="hint">scroll</span>
+    </section>
+  </div>
+
+  <!-- Section / Model 9: текст и элементы появляются в стиле референса -->
+  <section class="about" id="about" data-reveal>
+    <div class="about__info">
+      <p class="about__micro fx">ателье Caviar</p>
+      <h2 class="about__display" data-split>Caviar — ювелирное ателье, превращающее серийный смартфон в <em class="gold">произведение искусства</em>, которого не существует больше нигде.</h2>
+      <p class="about__body fx">Каждый bespoke-проект рождается с чистого листа. Ваш замысел, ваш герб, ваша история воплощаются вручную мастерами и ювелирами — <em class="gold">в золоте, титане, метеоритном камне, коже крокодила и ювелирной эмали.</em> Один заказ — один экземпляр в мире.</p>
+      <div class="about__cta-wrap fx">
+        <button class="about__cta" type="button">Заказать индивидуальный проект</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section / Model 10 (node 9010:239): подводка к галерее, те же анимации -->
+  <section class="about about--gallery" data-reveal>
+    <div class="about__info">
+      <p class="about__micro fx">Галерея идей</p>
+      <h2 class="about__display" data-split>Вдохновитесь идеями для своего персонального дизайна</h2>
+    </div>
+  </section>
+
+  <!-- Section / Model 8 (node 9010:190): плитка 5×3, кнопка-оверлей по центру -->
+  <section class="gallery" data-reveal>
+    <div class="gallery__cta-track">
+      <a class="gallery__cta" id="galleryCta" href="gallery.html">Открыть галерею идей</a>
+    </div>
+    <div class="gallery__grid">
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название" loading="lazy"></div></div>
+          <figcaption class="tile__caption">Название</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+<script src="js/hero.js"></script>
+
+<script src="js/reveal.js"></script>
+
+<script src="js/gallery-fx.js"></script>
+</body>
+</html>

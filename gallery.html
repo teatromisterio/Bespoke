@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Галерея идей — Caviar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Section / Model 11 (node 9011:256): интро галереи идей -->
+  <section class="about about--center" data-reveal>
+    <div class="about__info">
+      <p class="about__micro fx">Галерея идей Caviar</p>
+      <h1 class="about__display" data-split>Вдохновитесь концептами Caviar для вашего будущего устройства</h1>
+      <p class="about__body fx">Мы собрали для вас множество идей, чтобы вы нашли дизайн, близкий по духу</p>
+      <div class="about__cta-wrap fx">
+        <button class="about__cta" type="button">Заказать индивидуальный проект</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section / Model 13 (node 9011:285): панель фильтра галереи -->
+  <section class="filterbar" data-reveal>
+    <div class="filterbar__inner">
+      <h2 class="filterbar__label fx">Фильтр</h2>
+    </div>
+  </section>
+
+  <!-- Section / Model 14 (node 9011:299): чипы фильтра, множественный выбор -->
+  <section class="filterchips" id="filterSheet" data-reveal>
+    <div class="filterchips__grid" role="group" aria-label="Фильтр концептов по темам">
+      <button class="chip fx fx--fast" type="button" aria-pressed="false" data-filter="архитектура">Архитектура</button>
+      <button class="chip fx fx--fast" type="button" aria-pressed="false" data-filter="спорт">Спорт</button>
+      <button class="chip fx fx--fast" type="button" aria-pressed="false" data-filter="зодиак">Зодиак</button>
+      <button class="chip fx fx--fast" type="button" aria-pressed="false" data-filter="кино">Кино</button>
+      <button class="chip fx fx--fast" type="button" aria-pressed="false" data-filter="портреты">Портреты</button>
+      <button class="chip fx fx--fast" type="button" aria-pressed="false" data-filter="романтизм">Романтизм</button>
+      <button class="chip fx fx--fast" type="button" aria-pressed="false" data-filter="природа">Природа</button>
+      <button class="chip fx fx--fast" type="button" aria-pressed="false" data-filter="символика">Символика</button>
+      <button class="chip fx fx--fast" type="button" aria-pressed="false" data-filter="авто">Авто</button>
+      <button class="chip fx fx--fast" type="button" aria-pressed="false" data-filter="символы">Символы</button>
+    </div>
+    <!-- тестовая строка состояния: показывает логику мультивыбора, в макете её нет -->
+    <p class="filterchips__status" id="filterStatus" aria-live="polite">Показаны все концепты</p>
+    <button class="filterchips__apply" id="filterApply" type="button">Применить</button>
+  </section>
+
+  <!-- плавающая кнопка фильтра (только мобильная версия) -->
+  <button class="filter-fab" id="filterFab" type="button" aria-expanded="false" aria-controls="filterSheet">
+    Открыть фильтр<span class="filter-fab__count" id="filterFabCount" hidden></span>
+  </button>
+
+  <!-- Section / Model 15 (node 9016:401): сетка концептов, та же система что на главной -->
+  <section class="gallery gallery--concepts" data-reveal>
+    <div class="gallery__grid" id="conceptsGrid">
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="архитектура,кино">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — архитектура,кино" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">архитектура,кино</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="спорт">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — спорт" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">спорт</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="зодиак">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — зодиак" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">зодиак</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="кино,портреты">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — кино,портреты" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">кино,портреты</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="портреты">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — портреты" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">портреты</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="романтизм">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — романтизм" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">романтизм</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="природа,романтизм">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — природа,романтизм" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">природа,романтизм</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="символика">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — символика" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">символика</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="авто">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — авто" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">авто</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="символы,природа">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — символы,природа" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">символы,природа</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="архитектура">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — архитектура" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">архитектура</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="спорт">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — спорт" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">спорт</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="зодиак,символика">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — зодиак,символика" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">зодиак,символика</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="кино">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — кино" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">кино</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="портреты">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — портреты" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">портреты</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="романтизм,авто">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — романтизм,авто" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">романтизм,авто</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="природа">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — природа" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">природа</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="символика">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — символика" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">символика</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="авто,символы">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — авто,символы" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">авто,символы</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="символы">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — символы" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">символы</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="архитектура">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — архитектура" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">архитектура</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="спорт,архитектура">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — спорт,архитектура" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">спорт,архитектура</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="зодиак">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — зодиак" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">зодиак</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="кино">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — кино" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">кино</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="портреты,спорт">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — портреты,спорт" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">портреты,спорт</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="романтизм">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — романтизм" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">романтизм</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="природа">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — природа" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">природа</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="символика,зодиак">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — символика,зодиак" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">символика,зодиак</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="авто">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — авто" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">авто</span></figcaption>
+        </figure>
+      </div>
+      <div class="gallery__cell concept" data-large="assets/tile-large.jpg" data-tags="символы">
+        <figure class="gallery__tile fx fx--fast">
+          <div class="tile__media"><div class="tile__zoom"><img src="assets/tile.jpg" alt="Название — символы" loading="lazy"></div></div>
+          <button class="tile__zoom-btn" type="button">Увеличить</button>
+          <figcaption class="tile__caption">Название<span class="tile__tags">символы</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section / Model 16 (node 9019:467): попап концепта с листанием -->
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Просмотр концепта">
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" src="" alt="">
+      <div class="lightbox__controls">
+        <button class="lightbox__btn" id="lbPrev" type="button" aria-label="Предыдущий">&lt;</button>
+        <button class="lightbox__btn" id="lbClose" type="button" aria-label="Закрыть">X</button>
+        <button class="lightbox__btn" id="lbNext" type="button" aria-label="Следующий">&gt;</button>
+      </div>
+    </figure>
+    <figcaption class="lightbox__caption">
+      <span class="lightbox__name" id="lbName">Название</span>
+      <span class="lightbox__cat" id="lbCat">символика</span>
+    </figcaption>
+  </div>
+
+<script src="js/reveal.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/gallery-fx.js"></script>
+<script src="js/concepts.js"></script>
+<script src="js/filter-sheet.js"></script>
+</body>
+</html>
