@@ -11,6 +11,7 @@
   var btnPrev = document.getElementById('lbPrev');
   var btnNext = document.getElementById('lbNext');
   var btnClose = document.getElementById('lbClose');
+  var legendEl = document.getElementById('lbLegend');
 
   var list = [];      /* видимые карточки на момент открытия */
   var index = 0;
@@ -21,7 +22,8 @@
     return {
       /* в попап идёт крупная версия из data-large; плиточная — только запасной вариант */
       src: card.getAttribute('data-large') || (image ? image.src : ''),
-      name: 'Название',
+      name: card.getAttribute('data-name') || 'Название',
+      legend: card.getAttribute('data-legend') || '',
       cat: (card.getAttribute('data-tags') || '').replace(/,/g, ', ')
     };
   }
@@ -34,6 +36,7 @@
       img.alt = d.name + ' — ' + d.cat;
       nameEl.textContent = d.name;
       catEl.textContent = d.cat;
+      if (legendEl) legendEl.textContent = d.legend;
       img.style.opacity = '1';
     }, 200);
   }
@@ -48,6 +51,7 @@
     var d = cardData(list[index]);
     img.src = d.src; img.alt = d.name + ' — ' + d.cat;
     nameEl.textContent = d.name; catEl.textContent = d.cat;
+    if (legendEl) legendEl.textContent = d.legend;
 
     box.hidden = false;
     requestAnimationFrame(function () { box.classList.add('is-open'); });
@@ -76,6 +80,18 @@
     if (!trigger) return;
     var card = trigger.closest('.concept');
     if (card) open(card);
+  });
+
+  /* кнопки действий: закрыть попап и проскроллить к CTA */
+  box.addEventListener('click', function (e) {
+    var act = e.target.closest('.lightbox__act');
+    if (!act) return;
+    e.preventDefault();
+    shut();
+    var target = document.getElementById('atelier');
+    if (target) setTimeout(function () {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 360);
   });
 
   btnPrev.addEventListener('click', function () { step(-1); });
